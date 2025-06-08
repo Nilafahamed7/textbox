@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textbox</title>
+</head>
+
+<body style="background-color: lightsteelblue;">
+
+    <form style="margin: 20px;border: solid black 2px;padding: 20px;width:fit-content;background-color: pink;">
+        <label for="textarea"><b>Maximum 200 characters:</b></label><br>
+        <textarea rows="10" cols="50" maxlength="200" required id="textarea" style="margin-top:10px;margin-bottom: 10px;"></textarea><br>
+        <span id="counter">0/200 characters</span><br>
+        <span id="warning" class="error"></span><br>
+    </form>    
+
+        <script>
+            var textbox = document.getElementById("textarea")
+            var counter = document.getElementById("counter")
+            var warning = document.getElementById("warning")
+
+            const maxchars = 200
+
+
+        textbox.addEventListener("input", () => {
+            var length = textbox.value.length
+            counter.textContent = `${length}/${maxchars} characters (${maxchars - length} left)`
+            if (length >= maxchars) {
+                warning.textContent = "sorry you reached maximum characters"
+            }
+            else {
+                warning.textContent = ""
+            }
+        })    
+        </script>
+
+       
+
+</body>
+
+</html>
